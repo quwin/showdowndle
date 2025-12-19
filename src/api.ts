@@ -1,6 +1,6 @@
 import { FullTierData } from "./dataStore";
 import { convertToSmogonSpriteName } from "./nameConverters";
-const SERVER_URL = 'http://localhost:3000/';
+const SERVER_URL = '/api/';
 
 export async function fetchLatestTierData(
   gen: number, tier: string
