@@ -2,6 +2,20 @@ import { getYear, getMonth, subMonths, getDate } from 'date-fns';
 import { FullTierData, PokemonStatResponse, PokemonTypeResponse, SpriteType } from './dataStore';
 
 /**
+ * Extracts usage data from FullTierData object.
+ * 
+ * @param {FullTierData} data 
+ * @returns {Record<string, number>}
+ */
+function extractUsage(data: FullTierData): Record<string, number> {
+  const result: Record<string, number> = {};
+  for (const key in data) {
+    result[key] = data[key].usage;
+  }
+  return result;
+}
+
+/**
  * Function that finds the URL for the Smogon data given year, month,
  * generation and tier and returns the chaos URL as a string.
  * The URL is always for the 1630+ elo data, unless it is for gen9ou
@@ -112,22 +126,27 @@ export async function scrapePokemonInTier(
     getYear(prevDate3), getMonth(prevDate3), gen, tier
   );
 
-  const response1 = await fetch(url1);
-  const response2 = await fetch(url2);
-  const response3 = await fetch(url3);
-  if (!response1.ok || !response2.ok || !response3.ok) {
+  const [res1, res2, res3] = await Promise.all([
+    fetch(url1), fetch(url2), fetch(url3),
+  ]);
+  if (!res1.ok || !res2.ok || !res3.ok) {
     throw new Error(`Failed to find Pokemon in gen${gen}${tier}`);
   }
 
-  const data1: FullTierData = (await response1.json()).data;
-  const data2: FullTierData = (await response2.json()).data;
-  const data3: FullTierData = (await response3.json()).data;
+  const [{ data: data1 }, { data: data2 }, { data: data3 }] =
+  await Promise.all([
+    res1.json(), res2.json(), res3.json(),
+  ]);
+
+  const usage1: Record<string, number> = extractUsage(data1);
+  const usage2: Record<string, number> = extractUsage(data2);
+  const usage3: Record<string, number> = extractUsage(data3);
 
   const tieredPokemon: string[] = [];
   for (const key in data1) {
     if (
-      (currData[key] && data1[key] && data2[key] && data3[key]) &&
-      data1[key].usage + data2[key].usage + data3[key].usage >= 3 * 0.0452
+      (currData[key] && usage1[key] && usage2[key] && usage3[key]) &&
+      usage1[key] + usage2[key] + usage3[key] >= 3 * 0.0452
     ) {
       tieredPokemon.push(key);
     }
