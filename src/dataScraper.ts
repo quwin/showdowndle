@@ -1,5 +1,9 @@
 import { getYear, getMonth, subMonths, getDate } from 'date-fns';
-import { FullTierData, PokemonStatResponse, PokemonTypeResponse, SpriteType } from './dataStore';
+import { FullTierData, PokemonStatResponse, PokemonTypeResponse, SpriteData, SpriteType } from './dataStore';
+
+const SMOGON_URL = 'https://www.smogon.com/stats/';
+const POKEAPI_URL = 'https://pokeapi.co/api/v2/';
+const SHOWDOWN__SPRITE_URL = 'https://play.pokemonshowdown.com/sprites/';
 
 /**
  * Extracts usage data from FullTierData object.
@@ -38,7 +42,7 @@ function generateSomogonUrl(
     elo = 1695;
   }
 
-  return `https://www.smogon.com/stats/${year}-${stringMonth}/chaos/gen${gen}${tier}-${elo}.json`;
+  return `${SMOGON_URL}${year}-${stringMonth}/chaos/gen${gen}${tier}-${elo}.json`;
 }
 
 /**
@@ -168,16 +172,16 @@ export async function scrapePokemonInTier(
  * @returns {Promise<number[]>} if the Pokemon is found
  */
 export async function scrapeBaseStats(pokemon: string): Promise<number[]> {
-  let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+  let response = await fetch(`${POKEAPI_URL}pokemon/${pokemon}`);
 
   if (!response.ok) {
-    const formResponse = await fetch(`https://pokeapi.co/api/v2/pokemon-form/${pokemon}`);
+    const formResponse = await fetch(`${POKEAPI_URL}pokemon-form/${pokemon}`);
     
     if (!formResponse.ok) {
       throw new Error(`Pokemon "${pokemon}" not found`);
     } else {
       const formData = await formResponse.json();
-      response = await fetch(`https://pokeapi.co/api/v2/pokemon/${formData.pokemon.name}`);
+      response = await fetch(`${POKEAPI_URL}pokemon/${formData.pokemon.name}`);
     }
   }
 
@@ -197,10 +201,10 @@ export async function scrapeBaseStats(pokemon: string): Promise<number[]> {
  * @returns {Promise<string[]>} if the Pokemon is found
  */
 export async function scrapeTypes(pokemon: string): Promise<string[]> {
-  let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+  let response = await fetch(`${POKEAPI_URL}pokemon/${pokemon}`);
 
   if (!response.ok) {
-    const formResponse = await fetch(`https://pokeapi.co/api/v2/pokemon-form/${pokemon}`);
+    const formResponse = await fetch(`${POKEAPI_URL}pokemon-form/${pokemon}`);
     
     if (!formResponse.ok) {
       throw new Error(`Pokemon "${pokemon}" not found`);
@@ -233,15 +237,15 @@ export async function scrapeTypes(pokemon: string): Promise<string[]> {
  */
 export async function scrapeSprite(
   spriteName: string
-): Promise<{blob: Blob, type: SpriteType}> {
+): Promise<SpriteData> {
   let response = await fetch(
-    `https://play.pokemonshowdown.com/sprites/gen5ani/${spriteName}.gif`
+    `${SHOWDOWN__SPRITE_URL}gen5ani/${spriteName}.gif`
   );
   let spriteType = SpriteType.GIF;
 
   if (!response.ok) {
     response = await fetch(
-      `https://play.pokemonshowdown.com/sprites/gen5/${spriteName}.png`
+      `${SHOWDOWN__SPRITE_URL}gen5/${spriteName}.png`
     );
     spriteType = SpriteType.PNG;
 
