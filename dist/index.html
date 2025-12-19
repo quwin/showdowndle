@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Showdowndle</title>
+  <script type="module" crossorigin src="/assets/index-DfED7DIF.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index--mJeTSS-.css">
+</head>
+
+<body>
+
+  <div>
+    <header style="color:#96B1BD"><b>Pokémon</b></header>
+    <header style="color:#266FA5;"><b><i>SHOWDOWNDLE!</i></b></header>
+  </div>
+  <div class="menu-container">
+    <button class="button button-first" id="instructButton">
+      How To Play
+    </button>
+    <button class="button button-middle" id="clarifyButton">
+      Clarifications
+    </button>
+    <button class="button button-last" id="creditButton">
+      Credits
+    </button>
+  </div>
+
+  <div class="menugroup" id="formatSelectMenu">
+    <p>
+      <label class="label" for="format">
+        <strong>Format:</strong>
+      </label>
+      <select class="button select" id="format" name="format">
+        <optgroup label="S/V Singles">
+          <option value="9ou" selected>OU</option>
+          <option value="9uu">UU</option>
+          <option value="9ru">RU</option>
+          <option value="9nu">NU</option>
+          <option value="9pu">PU</option>
+        </optgroup>
+
+        <optgroup label="Past Gens OU">
+          <option value="8ou">[Gen 8] OU</option>
+          <option value="7ou">[Gen 7] OU</option>
+          <option value="6ou">[Gen 6] OU</option>
+          <option value="5ou">[Gen 5] OU</option>
+          <option value="4ou">[Gen 4] OU</option>
+          <option value="3ou">[Gen 3] OU</option>
+          <option value="2ou">[Gen 2] OU</option>
+          <option value="1ou">[Gen 1] OU</option>
+        </optgroup>
+
+      </select>
+    </p>
+
+    <p>
+      <button class="button big" id="gameStart">
+        <strong>Guess!</strong>
+        <br>
+        <small>Guess a random Pokémon</small>
+      </button>
+    </p>
+  </div>
+
+  <!-- Need to figure out how to make submission also work on enter -->
+  <div class="setchart" id="guessWrapper" style="display: none;">
+    <label class="label" for="guessBox" id="guessBoxLabel"> Who's That Pokémon?
+      <br>
+      <input type="text" class="textbox" id="guessBox" name="guessBox" style="display:inline;">
+      <span style="color: red; display: none;" id="invalidError">
+        Invalid Pokémon!
+      </span>
+      <button class="button" id="guessSubmitButton">Submit</button>
+    </label>
+  </div>
+
+  <div id="guessContainer"></div>
+
+</body>
+</html>
