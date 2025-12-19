@@ -13,8 +13,6 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "lib": ["ESNEXT", "DOM"],
-    "noEmit": true,
-    "allowImportingTsExtensions": true,
 
     // Other Outputs
     "sourceMap": false,
