@@ -1,7 +1,7 @@
 import { titleCase } from "title-case";
-import { scrapeBaseStats, scrapeTypes } from "./dataScraper";
-import { FullTierData, Nature, Natures, Stats, PokemonGuessData, StatisticsBlock } from "./dataStore";
-import { convertToSmogonAndPokeApiName } from "./nameConverters";
+import { scrapeBaseStats, scrapeTypes } from "./dataScraper.ts";
+import { FullTierData, Nature, Natures, Stats, PokemonGuessData, StatisticsBlock } from "./dataStore.ts";
+import { convertToSmogonAndPokeApiName } from "./nameConverters.ts";
 
 /**
  * Given a pokemon, checks the tier data for the Pokemon.

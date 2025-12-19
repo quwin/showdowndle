@@ -1,4 +1,4 @@
-import { NameData } from "./dataStore";
+import { NameData } from "./dataStore.ts";
 
 function nidoranNameConverter(name: string): NameData {
   if (name.includes('f')) {
