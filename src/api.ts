@@ -40,9 +40,7 @@ export async function fetchSprite(
   pokemon: string
 ) : Promise<Blob> {
   const name: string = convertToSmogonSpriteName(pokemon);
-  const response = await fetch(
-    `${SERVER_URL}sprite/${name}`
-  );
+  const response = await fetch(`${SERVER_URL}sprite/${name}`);
 
   if (!response.ok) {
     throw new Error(`Server error (${response.status})`);
