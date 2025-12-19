@@ -1,6 +1,6 @@
 import { getUsageStats, getMostCommonNature, getPokemonGuessData } from "../dataCollector";
 import { scrapeLatestData } from "../dataScraper";
-import { FullTierData, Nature, Natures, PokemonGuessData } from '../../src/dataStore';
+import { FullTierData, Nature, Natures, PokemonGuessData } from '../dataStore';
 const TIMEOUT_MS = 60 * 1000;
 
 const data: FullTierData = await scrapeLatestData(9, 'ou');
