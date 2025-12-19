@@ -1,7 +1,7 @@
 import { comparePokemon } from "../guess"
 import { scrapeBaseStats, scrapeLatestData } from "../dataScraper";
 import { getPokemonGuessData, getUsageStats } from "../dataCollector";
-import { Correctness, FullTierData } from '../dataStore';
+import { Correctness, FullTierData } from '../../src/dataStore';
 const TIMEOUT_MS = 60 * 1000;
 
 const data: FullTierData = await scrapeLatestData(9, 'ou');

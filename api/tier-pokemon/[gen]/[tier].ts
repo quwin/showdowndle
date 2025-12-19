@@ -1,4 +1,4 @@
-import { scrapePokemonInTier } from '../../../src/dataScraper';
+import { scrapePokemonInTier } from '../../dataScraper';
 
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') {

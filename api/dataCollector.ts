@@ -1,6 +1,6 @@
 import { titleCase } from "title-case";
 import { scrapeBaseStats, scrapeTypes } from "./dataScraper";
-import { FullTierData, Nature, Natures, Stats, PokemonGuessData, StatisticsBlock } from "./dataStore";
+import { FullTierData, Nature, Natures, Stats, PokemonGuessData, StatisticsBlock } from "../src/dataStore";
 import { convertToSmogonAndPokeApiName } from "./nameConverters";
 
 /**
