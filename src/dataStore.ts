@@ -31,6 +31,11 @@ export interface NameData {
   pokeApiName: string
 };
 
+export interface SpriteData {
+  blob: Blob,
+  type: SpriteType
+};
+
 export interface PokemonGuessData {
   name: string,
   usage: number,
