@@ -1,5 +1,13 @@
 import { scrapePokemonInTier } from '../../_lib/dataScraper.js';
 
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '50mb',
+    },
+  },
+};
+
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') {
     return res.status(405).json({error: 'Method not allowed'});
