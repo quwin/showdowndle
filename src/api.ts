@@ -19,8 +19,6 @@ export async function fetchLatestTierData(
 export async function fetchPokemonInTier(
   gen: number, tier: string, tierData: FullTierData
 ) : Promise<string[]> {
-  console.log((new Blob[tierData as any]).size);
-
   const response = await fetch(
     `${SERVER_URL}tier-pokemon/${gen}/${tier}`, {
       method: "POST",
