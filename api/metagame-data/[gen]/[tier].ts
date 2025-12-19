@@ -1,5 +1,5 @@
-import { scrapeLatestData } from '../../_lib/dataScraper';
-import { FullTierData } from '../../_lib/dataStore';
+import { scrapeLatestData } from '../../_lib/dataScraper.js';
+import { FullTierData } from '../../_lib/dataStore.js';
 
 export default async function handler(req: any, res: any) {
   const {gen, tier} = req.query;
