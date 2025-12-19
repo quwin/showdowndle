@@ -1,0 +1,37 @@
+{
+  "name": "showdowndle",
+  "version": "1.0.0",
+  "description": "Pokemon Showdown Wordle-like",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "dev": "vite"
+  },
+  "ts-jest": {
+    "useESM": true
+  },
+  "author": "Kevin Cai",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "date-fns": "^4.1.0",
+    "express": "^5.2.1",
+    "parse-json": "^8.3.0",
+    "prompt-sync": "^4.2.0",
+    "title-case": "^4.3.2",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.0.1",
+    "@types/prompt-sync": "^4.2.3",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.6",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vite": "^6.4.1"
+  }
+}

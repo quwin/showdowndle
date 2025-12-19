@@ -1,0 +1,29 @@
+<i> See the clarifications if you are confused about the target Pokémon or usage. </i>
+<br> <br> <br>
+<strong> How To Play</strong>
+<br>
+Pick a format from the box below and hit the Generate! button.
+<br> <br>
+A random Pokémon from that is in that tier will be generated (kinda... see the clarifications for more details).
+<br> <br>
+Once the target is generated, enter the name of a Pokémon to make your guess.
+<br> <br> <br>
+<strong> Interpreting Guess Results</strong>
+<br>
+You will be shown that Pokémon's most recent usage statistics, types, base stat total and highest stat.
+<br> <br>
+The box for each will be green if you got it correct, yellow if it is partially correct and white otherwise.
+<br> <br>
+Usaage statistics will be yellow if you are within a 5% range (2.5% above and below) of the target's usage.
+<br> <br>
+Base stat total will be yellow if you are within a 50 point range.
+<br> <br>
+Usage stats and base stat total will also have an arrow indicating if your guess is greater than or less than the target.
+<br> <br>
+Types will be yellow if you have the right type but in the wrong order.
+<br>
+For example, if your guess was Great Tusk (ground/fighting) and the target is Quagsire (water/ground), ground would be yellow and fighting would be white.
+<br> <br>
+Highest stat will only be white or green.
+<br>
+If a Pokémon has multiple highest stats, it will pick the first in the order of hp, atk, def, sp. atk, sp. def and speed.
