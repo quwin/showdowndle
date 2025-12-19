@@ -1,7 +1,7 @@
 import { fetchLatestTierData, fetchPokemonInTier, fetchSprite } from "./api";
-import { getPokemonGuessData } from "../api/dataCollector";
-import { Correctness, FullTierData, GuessResult, PokemonGuessData } from "../api/dataStore";
-import { comparePokemon } from "../api/guess";
+import { getPokemonGuessData } from "./dataCollector";
+import { Correctness, FullTierData, GuessResult, PokemonGuessData } from "./dataStore";
+import { comparePokemon } from "./guess";
 import { titleCase } from "title-case";
 
 let tierData: FullTierData | null = null;

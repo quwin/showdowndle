@@ -1,5 +1,5 @@
-import { FullTierData } from "../api/dataStore";
-import { convertToSmogonSpriteName } from "../api/nameConverters";
+import { FullTierData } from "./dataStore";
+import { convertToSmogonSpriteName } from "./nameConverters";
 const SERVER_URL = '/api/';
 
 export async function fetchLatestTierData(
