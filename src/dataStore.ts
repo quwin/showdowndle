@@ -1,9 +1,9 @@
 export enum Natures {
   ADAMANT = '+Atk, -SpA', BASHFUL = 'Neutral', BOLD = '+Def, -Atk', BRAVE = '+Atk, -Spe',
   CALM = "+SpD, -Atk", CAREFUL = '+SpD, -SpA', DOCILE = 'Neutral', GENTLE = '+SpD, -Def',
-  HARDY = 'Neutral', HASTY = '+Spe, -Def', IMPISH = '+Def, -Atk', JOLLY = '+Spe, -SpA',
+  HARDY = 'Neutral', HASTY = '+Spe, -Def', IMPISH = '+Def, -SpA', JOLLY = '+Spe, -SpA',
   LAX = '+Def, -SpD', LONELY = '+Atk, -Def', MILD = "+SpA, -Def", MODEST = '+SpA, -Atk',
-  NAIVE = '+Spe, -Def', NAUGHTY = '+Atk, -SpD', QUIET = '+SpA, -Spe', QUIRKY = 'Neutral',
+  NAIVE = '+Spe, -SpD', NAUGHTY = '+Atk, -SpD', QUIET = '+SpA, -Spe', QUIRKY = 'Neutral',
   RASH = '+SpA, -SpD', RELAXED = '+Def, -Spe', SASSY = '+SpD, -Spe', SERIOUS = 'Neutral',
   TIMID = '+Spe, -Atk'
 }
