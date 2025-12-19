@@ -1,6 +1,6 @@
-function nidoranNameConverter(
-  name: string
-): {smogonName: string, pokeApiName: string} {
+import { NameData } from "./dataStore";
+
+function nidoranNameConverter(name: string): NameData {
   if (name.includes('f')) {
     return {
       smogonName: 'NidoranF',
@@ -14,9 +14,7 @@ function nidoranNameConverter(
   }
 }
 
-function ogerponNameConverter(
-  name: string
-): {smogonName: string, pokeApiName: string} {
+function ogerponNameConverter(name: string): NameData {
   if (name.includes('wellspring')) {
     return {
       smogonName: 'ogerpon-wellspring',
@@ -40,9 +38,7 @@ function ogerponNameConverter(
   }
 }
 
-function oricorioNameConverter(
-  name: string
-): {smogonName: string, pokeApiName: string} {
+function oricorioNameConverter(name: string): NameData {
   if (name.includes('pom-pom') || name.includes('pom pom')) {
     return {
       smogonName: 'oricorio-pom-pom',
@@ -66,9 +62,7 @@ function oricorioNameConverter(
   }
 }
 
-function paldeanTaurosNameConverter(
-  name: string
-): {smogonName: string, pokeApiName: string} {
+function paldeanTaurosNameConverter(name: string): NameData {
   if (name.includes('aqua')) {
     return {
       smogonName: 'tauros-paldea-aqua',
@@ -87,9 +81,7 @@ function paldeanTaurosNameConverter(
   }
 }
 
-function shayminNameConverter(
-  name: string
-): {smogonName: string, pokeApiName: string} {
+function shayminNameConverter(name: string): NameData {
   if (name.includes('sky')) {
     return {
       smogonName: 'shaymin-sky',
@@ -103,16 +95,14 @@ function shayminNameConverter(
   }
 }
 
-function basculinNameConverter(): {smogonName: string, pokeApiName: string} {
+function basculinNameConverter(): NameData {
   return {
     smogonName: 'basculin',
     pokeApiName: 'basculin-red-striped'
   };
 }
 
-function genderNameConverter(
-  name: string, pokemon: string
-): {smogonName: string, pokeApiName: string} {
+function genderNameConverter(name: string, pokemon: string): NameData {
   if (name.includes('f')) {
     return {
       smogonName: pokemon + '-f',
@@ -126,9 +116,7 @@ function genderNameConverter(
   }
 }
 
-function darmanitanNameConverter(
-  name: string
-): {smogonName: string, pokeApiName: string} {
+function darmanitanNameConverter(name: string): NameData {
   if (name.includes('galar')) {
     return {
       smogonName: 'darmanitan-galar',
@@ -142,9 +130,7 @@ function darmanitanNameConverter(
   }
 }
 
-function genieNameConverter(
-  name: string, form: number
-): {smogonName: string, pokeApiName: string} {
+function genieNameConverter(name: string, form: number): NameData {
   const genies: string[] = [
     'tornadus', 'thundurus', 'landorus', 'enamorus'
   ]
@@ -162,14 +148,14 @@ function genieNameConverter(
   }
 }
 
-function meloettaNameConverter():{smogonName: string, pokeApiName: string} {
+function meloettaNameConverter(): NameData {
   return {
     smogonName: 'meloetta',
     pokeApiName: 'meloetta-aria'
   };
 }
 
-function aegislashNameConverter(): {smogonName: string, pokeApiName: string} {
+function aegislashNameConverter(): NameData {
   return {
     smogonName: 'aegislash',
     pokeApiName: 'aegislash-shield'
@@ -178,7 +164,7 @@ function aegislashNameConverter(): {smogonName: string, pokeApiName: string} {
 
 function pumpkabooLineNameConverter(
   name: string, positionInEvoLine: number
-): {smogonName: string, pokeApiName: string} {
+): NameData {
   const evolutionLine: string[] = ['pumpkaboo', 'gourgeist'];
 
   if (name.includes('small')) {
@@ -204,9 +190,7 @@ function pumpkabooLineNameConverter(
   }
 }
 
-function zygardeNameConverter(
-  name: string
-): {smogonName: string, pokeApiName: string} {
+function zygardeNameConverter(name: string): NameData {
   if (name.includes('10')) {
     return {
       smogonName: 'zygarde-10%',
@@ -220,9 +204,7 @@ function zygardeNameConverter(
   }
 }
 
-function lycanrocNameConverter(
-  name: string
-): {smogonName: string, pokeApiName: string} {
+function lycanrocNameConverter(name: string): NameData {
   if (name.includes('midnight')) {
     return {
       smogonName: 'lycanroc-midnight',
@@ -241,30 +223,28 @@ function lycanrocNameConverter(
   }
 }
 
-function wishiwashiNameConverter(): {smogonName: string, pokeApiName: string} {
+function wishiwashiNameConverter(): NameData {
   return {
     smogonName: 'wishiwashi',
     pokeApiName: 'wishiwashi-solo'
   };
 }
 
-function miniorNameConverter(): {smogonName: string, pokeApiName: string} {
+function miniorNameConverter(): NameData {
   return {
     smogonName: 'minior',
     pokeApiName: 'minior-red'
   };
 }
 
-function mimikyuNameConverter(): {smogonName: string, pokeApiName: string} {
+function mimikyuNameConverter(): NameData {
   return {
     smogonName: 'mimikyu',
     pokeApiName: 'mimikyu-disguised'
   };
 }
 
-function necrozmaNameConverter(
-  form: number
-): {smogonName: string, pokeApiName: string} {
+function necrozmaNameConverter(form: number): NameData {
   const form1: string[] = ['-dawn', '-dusk'];
   const form2: string[] = ['-wings', '-mane'];
 
@@ -274,30 +254,28 @@ function necrozmaNameConverter(
   }
 }
 
-function toxtricityNameConverter(): {smogonName: string, pokeApiName: string} {
+function toxtricityNameConverter(): NameData {
   return {
     smogonName: 'toxtricity',
     pokeApiName: 'toxtricity-amped'
   };
 }
 
-function eiscueNameConverter(): {smogonName: string, pokeApiName: string} {
+function eiscueNameConverter(): NameData {
   return {
     smogonName: 'eiscue',
     pokeApiName: 'eiscue-ice'
   };
 }
 
-function morpekoNameConverter(): {smogonName: string, pokeApiName: string} {
+function morpekoNameConverter(): NameData {
   return {
     smogonName: 'morpeko',
     pokeApiName: 'morpeko-full-belly'
   };
 }
 
-function urshifuNameConverter(
-  name: string
-): {smogonName: string, pokeApiName: string} {
+function urshifuNameConverter(name: string): NameData {
   if (name.includes('rapid')) {
     return {
       smogonName: 'urshifu-rapid-strike',
@@ -311,58 +289,56 @@ function urshifuNameConverter(
   }
 }
 
-function mausholdNameConverter(): {smogonName: string, pokeApiName: string} {
+function mausholdNameConverter(): NameData {
   return {
     smogonName: 'maushold',
     pokeApiName: 'maushold-family-of-four'
   };
 }
 
-function squawkabillyNameConverter(): {smogonName: string, pokeApiName: string} {
+function squawkabillyNameConverter(): NameData {
   return {
     smogonName: 'squawkabilly',
     pokeApiName: 'squawkabilly-green-plumage'
   };
 }
 
-function palafinNameConverter(): {smogonName: string, pokeApiName: string} {
+function palafinNameConverter(): NameData {
   return {
     smogonName: 'palafin',
     pokeApiName: 'palafin-hero'
   };
 }
 
-function tatsugiriNameConverter(): {smogonName: string, pokeApiName: string} {
+function tatsugiriNameConverter(): NameData {
   return {
     smogonName: 'tatsugiri',
     pokeApiName: 'tatsugiri-curly'
   };
 }
 
-function dudunsparceNameConverter(): {smogonName: string, pokeApiName: string} {
+function dudunsparceNameConverter(): NameData {
   return {
     smogonName: 'dudunsparce',
     pokeApiName: 'dudunsparce-two-segment'
   };
 }
 
-function terapagosNameConverter(): {smogonName: string, pokeApiName: string} {
+function terapagosNameConverter(): NameData {
   return {
     smogonName: 'terapagos',
     pokeApiName: 'terapagos-terastal'
   };
 }
 
-function keldeoNameConverter(): {smogonName: string, pokeApiName: string} {
+function keldeoNameConverter(): NameData {
   return {
     smogonName: 'keldeo',
     pokeApiName: 'keldeo-ordinary'
   };
 }
 
-function mrMimeNameConverter(
-  name: string
-): {smogonName: string, pokeApiName: string} {
+function mrMimeNameConverter(name: string): NameData {
   if (name.includes('galar')) {
     return {
       smogonName: 'mr. mime-galar',
@@ -376,23 +352,21 @@ function mrMimeNameConverter(
   }
 }
 
-function mrRimeNameConverter(): {smogonName: string, pokeApiName: string} {
+function mrRimeNameConverter(): NameData {
   return {
     smogonName: 'mr. rime',
     pokeApiName: 'mr-rime'
   };
 }
 
-function mimeJrNameConverter(): {smogonName: string, pokeApiName: string} {
+function mimeJrNameConverter(): NameData {
   return {
     smogonName: 'mime jr.',
     pokeApiName: 'mime-jr'
   };
 }
 
-function farfetchdNameConverter(
-  name: string
-): {smogonName: string, pokeApiName: string} {
+function farfetchdNameConverter(name: string): NameData {
   if (name.includes('galar')) {
     return {
       smogonName: 'farfetch\'d-galar',
@@ -406,14 +380,14 @@ function farfetchdNameConverter(
   }
 }
 
-function sirfetchdNameConverter(): {smogonName: string, pokeApiName: string} {
+function sirfetchdNameConverter(): NameData {
   return {
     smogonName: 'sirfetch\'d',
     pokeApiName: 'sirfetchd'
   };
 }
 
-function typeNullNameConverter(): {smogonName: string, pokeApiName: string} {
+function typeNullNameConverter(): NameData {
   return {
     smogonName: 'type: null',
     pokeApiName: 'type-null'
@@ -451,11 +425,9 @@ function isMega(name: string): string | null {
  * 
  * @param {string} name 
  * @param {number} region
- * @returns {{smogonName: string, pokeApiName: string}}
+ * @returns {NameData}
  */
-function regionalNameConverter(
-  name: string, region: number
-): {smogonName: string, pokeApiName: string} {
+function regionalNameConverter(name: string, region: number): NameData {
   const regions: string[] = ['alola', 'galar', 'hisui', 'paldea'];
   const belonging: string[] = ['alolan', 'galarian', 'hisuian', 'paldean'];
 
@@ -553,9 +525,7 @@ function hasSpaceInName(name: string): boolean {
   }
 }
 
-function megaXYform(
-  name: string, pokemon: string
-): {smogonName: string, pokeApiName: string} {
+function megaXYform(name: string, pokemon: string): NameData {
   if (name.includes('x')) {
     return {
       smogonName: pokemon + '-mega-x',
@@ -569,9 +539,7 @@ function megaXYform(
   }
 }
 
-function megaZform(
-  name: string, pokemon: string
-): {smogonName: string, pokeApiName: string} {
+function megaZform(name: string, pokemon: string): NameData {
   if (name.includes('z')) {
     return {
       smogonName: pokemon + '-mega' + '-z',
@@ -591,11 +559,9 @@ function megaZform(
  * 
  * @param {string} name 
  * @param {string} mega 
- * @returns {{smogonName: string, pokeApiName: string}}
+ * @returns {NameData}
  */
-function megaNameConverter(
-  name: string, mega: string
-): {smogonName: string, pokeApiName: string} {
+function megaNameConverter(name: string, mega: string): NameData {
   if (name.includes('charizard')) {
     return megaXYform(name, 'charizard');
   } else if (name.includes('mewtwo')) {
@@ -663,11 +629,9 @@ function megaNameConverter(
  * - All mega Pokemon
  * 
  * @param {string} pokemon 
- * @returns {{smogonName: string, pokeApiName: string}}
+ * @returns {NameData}
  */
-export function convertToSmogonAndPokeApiName(
-  pokemon: string
-): {smogonName: string, pokeApiName: string} {
+export function convertToSmogonAndPokeApiName(pokemon: string): NameData {
   let smogonName = pokemon.toLowerCase().trim();
   let pokeApiName = smogonName;
 
