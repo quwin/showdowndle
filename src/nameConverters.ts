@@ -632,8 +632,8 @@ function megaNameConverter(name: string, mega: string): NameData {
  * @returns {NameData}
  */
 export function convertToSmogonAndPokeApiName(pokemon: string): NameData {
-  let smogonName = pokemon.toLowerCase().trim();
-  let pokeApiName = smogonName;
+  const smogonName = pokemon.toLowerCase().trim();
+  const pokeApiName = smogonName;
 
   if (smogonName.includes('nidoran')) {
     return nidoranNameConverter(smogonName);
