@@ -223,7 +223,7 @@ async function createGuessCard(
  * @throws {Error}
  */
 async function fetchTextFile(fileName: string): Promise<string> {
-  const response = await fetch(`./text/${fileName}.txt`);
+  const response = await fetch(`/text/${fileName}.txt`);
 
   if (!response.ok) {
     throw new Error(`Failed to fetch ${fileName}.txt`);
