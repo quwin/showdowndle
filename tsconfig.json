@@ -5,8 +5,6 @@
     // "rootDir": "./src",
     // "outDir": "./dist",
 
-    // Environment Settings
-    // See also https://aka.ms/tsconfig/module
     "module": "ESNext",
     "target": "ESNext",
     "types": ["jest", "node"],
@@ -14,10 +12,9 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    // For nodejs:
     "lib": ["ESNEXT", "DOM"],
-    // "types": ["node"],
-    // and npm install -D @types/node
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
 
     // Other Outputs
     "sourceMap": false,
