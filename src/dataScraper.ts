@@ -69,7 +69,7 @@ export async function scrapeLatestData(
   const urlCurr = generateSomogonUrl(
     getYear(date), getMonth(date), gen, tier
   );
-  let responseCurr = await fetch(urlCurr);
+  const responseCurr = await fetch(urlCurr);
 
   if (!responseCurr.ok) {
     throw new Error(`Failed to find data for gen${gen}${tier}`);
@@ -107,7 +107,7 @@ export async function scrapeLatestData(
 export async function scrapePokemonInTier(
   currData: FullTierData, gen: number, tier: string
 ): Promise<string[]> {
-  let currDate = new Date();
+  const currDate = new Date();
   let monthOffset = (getMonth(currDate) + 1) % 3;
 
   if (monthOffset === 0) {
