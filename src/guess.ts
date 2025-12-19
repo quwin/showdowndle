@@ -1,4 +1,4 @@
-import { Correctness, GuessResult, PokemonGuessData } from "./dataStore.ts";
+import { Correctness, GuessResult, PokemonGuessData } from "./dataStore";
 
 /**
  * Given two PokemonGuessData, returns the GuessResult.
