@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import { scrapeLatestData, scrapePokemonInTier, scrapeSprite } from "./dataScraper";
-import { FullTierData, SpriteType } from "./dataStore";
+import { FullTierData, SpriteData, SpriteType } from "./dataStore";
 import cors from "cors";
 
 const app = express();
@@ -50,7 +50,7 @@ app.get('/sprite/:pokemon', async (req: Request, res: Response) => {
   const pokemon: string = req.params.pokemon;
 
   try {
-    const sprite: {blob: Blob, type: SpriteType} = await scrapeSprite(pokemon);
+    const sprite: SpriteData = await scrapeSprite(pokemon);
     const type = sprite.type;
     const blob = sprite.blob;
     const arrayBuffer = await blob.arrayBuffer();
