@@ -14,6 +14,7 @@
     "allowSyntheticDefaultImports": true,
     "lib": ["ESNEXT", "DOM"],
 
+
     // Other Outputs
     "sourceMap": false,
     "declaration": false,
@@ -40,4 +41,5 @@
     "moduleDetection": "force",
     "skipLibCheck": true,
   },
+  "include": ["src", "api"],
 }
