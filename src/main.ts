@@ -391,7 +391,7 @@ guessSubmitBtn.addEventListener('click', async () => {
 
     guessCount++
 
-    let guessResult: GuessResult = comparePokemon(targetData, guessData);
+    const guessResult: GuessResult = comparePokemon(targetData, guessData);
     guessContainer.style.display = 'inline';
     guessContainer.prepend(await createGuessCard(guessData, guessResult));
 
