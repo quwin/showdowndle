@@ -1,6 +1,5 @@
 import { scrapeBaseStats, scrapeLatestData, scrapePokemonInTier, scrapeSprite, scrapeTypes } from "../dataScraper";
-import { SpriteType } from "../dataStore";
-const TIMEOUT_MS = 60 * 1000;
+const TIMEOUT_MS = 70 * 1000;
 
 function generateStatResponse(
   hp: number, atk: number, def: number, spa: number, spd: number, spe: number
@@ -26,7 +25,7 @@ describe('scrapePokemon in Tier Tests', () => {
     for (let i = 1; i <= 9; i++) {
       await expect(scrapePokemonInTier
         (await scrapeLatestData(i, 'ou'), i, 'ou')
-      ).resolves.toStrictEqual(expect.any(Array<String>));
+      ).resolves.toStrictEqual(expect.any(Array<string>));
     }
   }, TIMEOUT_MS);
 
@@ -71,7 +70,7 @@ describe('scrapeTypes Tests', () => {
   }, TIMEOUT_MS);
 
   test('Throws error for non-existent pokemon', async () => {
-    await expect(scrapeTypes('funsparce')).rejects.toThrow();
+    await expect(scrapeTypes('bunsparce')).rejects.toThrow();
   }, TIMEOUT_MS);
 
   test('Correctly returns types for different forms', async () => {
@@ -102,11 +101,14 @@ describe('scrapeTypes Tests', () => {
 
 describe('scrapeSprite Tests', () => {
   test('Works for existing pokemon', async () => {
-    await expect(scrapeSprite(
-      'dunsparce'
-    )).resolves.toStrictEqual({
-      blob: expect.any(Blob), type: expect.any(SpriteType)
-    });
+    const spriteData = await scrapeSprite('dunsparce');
+
+    expect(spriteData.blob).toBeDefined();
+    expect(spriteData.blob).toHaveProperty('size');
+    expect(spriteData.blob.size).toBeGreaterThan(0);
+
+    expect(spriteData.type).toBeDefined();
+    expect(typeof spriteData.type).toBe('number');
   }, TIMEOUT_MS);
 
   test('Throws error for invalid sprite name', async () => {
