@@ -26,6 +26,11 @@ export interface Nature {
   statChanges: string
 }
 
+export interface NameData {
+  smogonName: string,
+  pokeApiName: string
+};
+
 export interface PokemonGuessData {
   name: string,
   usage: number,
