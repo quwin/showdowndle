@@ -313,6 +313,7 @@ async function restartGame() {
   guessCount = 0;
   guessContainer.innerHTML = '';
   guessBox.value = '';
+  invalidPokemonErrorMessage.style.display = 'none';
 
   const targetName: string = pokemonInTier[
     Math.floor(Math.random() * pokemonInTier.length)
