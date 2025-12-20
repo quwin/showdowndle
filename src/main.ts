@@ -312,7 +312,6 @@ gameStart.addEventListener('click', async () => {
   const gen: number = parseInt(format[0]);
   const tier: string = format.slice(1);
 
-  // console.log('Trying fetchLatestTierData'); //
   try {
     tierData = await fetchLatestTierData(gen, tier);
   } catch (err) {
@@ -322,9 +321,6 @@ gameStart.addEventListener('click', async () => {
     gameStart.innerHTML = originalHTML;
     return;
   }
-  // console.log(new Blob([JSON.stringify(tierData)]).size); //
-  // console.log(tierData); //
-  // console.log('Trying fetchPokemonInTier'); //
 
   try {
     pokemonInTier = await fetchPokemonInTier(gen, tier, tierData);
@@ -335,7 +331,6 @@ gameStart.addEventListener('click', async () => {
     gameStart.innerHTML = originalHTML;
     return;
   }
-  // console.log(pokemonInTier); //
 
   const targetName: string = pokemonInTier[
     Math.floor(Math.random() * pokemonInTier.length)
@@ -349,7 +344,6 @@ gameStart.addEventListener('click', async () => {
     gameStart.innerHTML = originalHTML;
     return;
   }
-  // console.log(target) //
 
   gameStart.disabled = false;
   gameStart.innerHTML = originalHTML;
@@ -376,7 +370,6 @@ guessSubmitBtn.addEventListener('click', async () => {
   invalidPokemonErrorMessage.style.display = 'none';
 
   const guessName = guessBox.value;
-  // console.log('User input:', guessName); //
 
   if (!targetData) {
     guessSubmitBtn.disabled = false;
@@ -387,7 +380,6 @@ guessSubmitBtn.addEventListener('click', async () => {
   let guessData: PokemonGuessData = null;
   try {
     guessData = await getPokemonGuessData(tierData, guessName);
-    // console.log(guessData); //
 
     guessCount++
 
