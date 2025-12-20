@@ -322,6 +322,11 @@ function enableFormatSelectMenu(originalHTML: string) {
 function getSuggestions(suggestions: string[]) {
   guessSuggestions.innerHTML = "";
 
+  if (suggestions.length === 0) {
+    guessSuggestions.style.display = "none";
+    return;
+  }
+
   guessSuggestions.style.display = "block";
 
   for (const suggestion of suggestions) {
