@@ -6,3 +6,5 @@
 usage data appear in the most recent tier data.
 <br>
 - Added a "Forfeit" button that allows you to give up and see the target Pokémon.
+<br>
+- When you win or lose, added a "Play Again" button that immediately restarts the game.
