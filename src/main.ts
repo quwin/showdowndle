@@ -244,11 +244,8 @@ async function fetchTextFile(fileName: string): Promise<string> {
  *
  * @param {string} innerHTML
  * @param {() => void} fn
- * @returns {HTMLDivElement}
  */
-function createPopup(
-  innerHTML: string, fn?: () => void
-): HTMLDivElement {
+function createPopup(innerHTML: string, fn?: () => void) {
   const overlay = document.createElement('div');
   overlay.className = 'overlay'; 
   overlay.id = 'overlayPopup';
@@ -282,7 +279,6 @@ function createPopup(
   }
 
   document.body.appendChild(overlay);
-  return popup;
 }
 
 /**
@@ -321,14 +317,6 @@ async function createDefeatPopup() {
   text += '<br> <br>';
   text += `Defeated by a wild ${targetData.name}.`
   createPopup(text);
-}
-
-/**
- * Creates the popup asking if you want to forfeit.
- */
-async function createDefeatQuery() {
-  let text: string = '<strong>Give Up?</strong>';
-  const popup = createPopup(text, createDefeatPopup);
 }
 
 /**
@@ -499,8 +487,8 @@ guessSubmitBtn.addEventListener('click', async () => {
 });
 
 forfeitButton.addEventListener('click', async () => {
-  createDefeatQuery();
-  disableGuessMenu();
+  const text: string = '<strong>Give Up?</strong>';
+  createPopup(text, createDefeatPopup);
 });
 
 /**
