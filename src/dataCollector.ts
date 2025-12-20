@@ -99,3 +99,39 @@ export function extractUsage(data: FullTierData): Record<string, number> {
   }
   return result;
 }
+
+/**
+ * Extracts name data from FullTierData object.
+ * 
+ * @param {FullTierData} data 
+ * @returns {string[]}
+ */
+export function extractNames(data: FullTierData): string[] {
+  const result: string[] = [];
+  for (const key in data) {
+    result.push(key);
+  }
+  return result;
+}
+
+/**
+ * Given the name data and an input finds the first 8 entries
+ * that start with the input (case insensitive) and returns them.
+ *
+ * @param {string} input 
+ * @param {string[]} nameData 
+ * @returns {string[]}
+ */
+export function getTextBoxSuggestions(
+  input: string, nameData: string[]
+): string[] {
+  const suggestions: string[] = [];
+
+  for (let i = 0; i < nameData.length && suggestions.length < 8; i++) {
+    if (nameData[i].toLowerCase().startsWith(input.toLowerCase())) {
+      suggestions.push(nameData[i]);
+    }
+  }
+
+  return suggestions;
+}
