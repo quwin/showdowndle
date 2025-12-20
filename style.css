@@ -287,22 +287,6 @@ select {
 	font-family: Verdana, Helvetica, Arial, sans-serif;
 }
 
-.dark .tabbar a.button,
-.dark .tabbar a.button:hover {
-	box-shadow: inset 0.5px 1px 1px rgba(255, 255, 255, 0.5);
-}
-.dark .tabbar a.button:active,
-.dark .tabbar a.button.cur,
-.dark .tabbar a.button.cur:hover,
-.dark .tabbar a.button.cur:active {
-	box-shadow: none;
-}
-.dark .maintabbarbottom {
-	background: #555555;
-	border-color: #5A5A5A;
-	border-top-color: #34373b;
-}
-
 /*********************************************************
  * Forms
  *********************************************************/
@@ -468,6 +452,23 @@ header {
 	color: #999999;
 	text-shadow: none;
 	box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+
+.menugroup .button-first, .button-middle {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+.menugroup .button-last, .button-middle {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	margin-left: -1px;
+}
+.menugroup .button-first:hover, .button-middle:hover {
+	/* puts the right-border over the left border of the button to the right of it */
+	position: relative;
+}
+.menugroup .button-first.cur:hover, .button-middle.cur:hover {
+	position: static;
 }
 
 /*********************************************************
