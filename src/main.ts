@@ -22,6 +22,7 @@ const clarifyButton = document.getElementById('clarifyButton') as HTMLButtonElem
 const creditButton = document.getElementById('creditButton') as HTMLButtonElement;
 const changelogButton = document.getElementById('changelogButton') as HTMLButtonElement;
 const guessSuggestions = document.getElementById('guessSuggestions') as HTMLUListElement;
+const forfeitButton = document.getElementById('forfeitButton') as HTMLButtonElement;
 
 /**
  * Creates a box for a boolean (yes/no) guess result.
@@ -237,10 +238,14 @@ async function fetchTextFile(fileName: string): Promise<string> {
 
 /**
  * Creates a popup with the given innerHTML.
+ * Returns the popup div.
  *
  * @param {string} innerHTML
+ * @returns {HTMLDivElement}
  */
-async function createPopup(innerHTML: string) {
+function createPopup(
+  innerHTML: string, fn?: () => void
+): HTMLDivElement {
   const overlay = document.createElement('div');
   overlay.className = 'overlay'; 
   overlay.id = 'overlayPopup';
@@ -256,13 +261,25 @@ async function createPopup(innerHTML: string) {
   const closeButton = document.createElement('button');
   closeButton.className = 'big button';
   closeButton.innerHTML = 'Close';
-  closeButton.id = 'popupCloseButton';
   closeButton.addEventListener('click', () => {
     overlay.remove();
   });
   popup.appendChild(closeButton);
 
+  if (fn) {
+    const okButton = document.createElement('button');
+    okButton.className = 'big button';
+    okButton.innerHTML = 'Ok';
+    okButton.style.display = 'inline';
+    okButton.addEventListener('click', () => {
+      overlay.remove();
+      fn();
+    });
+    popup.appendChild(okButton);
+  }
+
   document.body.appendChild(overlay);
+  return popup;
 }
 
 /**
@@ -289,8 +306,26 @@ async function createInfoPopup(fileName: string) {
 async function createVictoryPopup() {
   let text: string = '<strong>Congragulations!</strong>';
   text += '<br> <br>';
-  text += `You got ${targetData.name} in ${guessCount} guesses.`
+  text += `You caught ${targetData.name} in ${guessCount} guesses.`
   createPopup(text);
+}
+
+/**
+ * Creates the popup for when you forfeit.
+ */
+async function createDefeatPopup() {
+  let text: string = '<strong>You Blacked Out!</strong>';
+  text += '<br> <br>';
+  text += `Defeated by a wild ${targetData.name}.`
+  createPopup(text);
+}
+
+/**
+ * Creates the popup asking if you want to forfeit.
+ */
+async function createDefeatQuery() {
+  let text: string = '<strong>Give Up?</strong>';
+  const popup = createPopup(text, createDefeatPopup);
 }
 
 /**
@@ -300,7 +335,16 @@ async function createVictoryPopup() {
 function disableFormatSelectMenu() {
   gameStart.disabled = true;
   formatSelection.disabled = true;
-  console.log('disabled format selection menu');
+}
+
+/**
+ * Disables the guess menu including the
+ * text box, submit button and forfeit button.
+ */
+function disableGuessMenu() {
+  guessSubmitBtn.disabled = true;
+  guessBox.disabled = true;
+  forfeitButton.disabled = true;
 }
 
 /**
@@ -314,6 +358,17 @@ function enableFormatSelectMenu(originalHTML: string) {
   formatSelection.disabled = false;
   gameStart.innerHTML = originalHTML;
 }
+
+/**
+ * Enables the guess menu including the
+ * text box, submit button and forfeit button.
+ */
+function enableGuessMenu() {
+  guessSubmitBtn.disabled = false;
+  guessBox.disabled = false;
+  forfeitButton.disabled = false;
+}
+
 /**
  * Given a list of suggestions, updates
  * the guessSuggestions ul to contain them.
@@ -407,15 +462,13 @@ gameStart.addEventListener('click', async () => {
  * to the guessBox.
  */
 guessSubmitBtn.addEventListener('click', async () => {
-  guessSubmitBtn.disabled = true;
-  guessBox.disabled = true;
+  disableGuessMenu();
   invalidPokemonErrorMessage.style.display = 'none';
 
   const guessName = guessBox.value;
 
   if (!targetData) {
-    guessSubmitBtn.disabled = false;
-    guessBox.disabled = false;
+    enableGuessMenu();
     return;
   }
 
@@ -431,8 +484,7 @@ guessSubmitBtn.addEventListener('click', async () => {
 
     if (guessResult.name === true) {
       createVictoryPopup();
-      guessSubmitBtn.disabled = true;
-      guessBox.disabled = true;
+      disableGuessMenu();
       return;
     }
   } catch (err) {
@@ -440,8 +492,12 @@ guessSubmitBtn.addEventListener('click', async () => {
     console.log(`Error: ${err.message}.`);
   }
 
-  guessSubmitBtn.disabled = false;
-  guessBox.disabled = false;
+  enableGuessMenu();
+});
+
+forfeitButton.addEventListener('click', async () => {
+  createDefeatQuery();
+  disableGuessMenu();
 });
 
 /**
