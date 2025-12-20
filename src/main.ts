@@ -322,9 +322,16 @@ function enableFormatSelectMenu(originalHTML: string) {
 function getSuggestions(suggestions: string[]) {
   guessSuggestions.innerHTML = "";
 
+  guessSuggestions.style.display = "block";
+
   for (const suggestion of suggestions) {
     const li = document.createElement("li");
     li.textContent = suggestion;
+    li.addEventListener("mousedown", () => {
+        guessBox.value = suggestion;
+        guessSuggestions.style.display = "none";
+    });
+
     guessSuggestions.appendChild(li);
   }
 }
