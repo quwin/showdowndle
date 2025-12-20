@@ -1,5 +1,5 @@
 import { getYear, getMonth, subMonths, getDate } from 'date-fns';
-import { FullTierData, PokemonStatResponse, PokemonTypeResponse, SpriteData, SpriteType } from './dataStore';
+import { FullTierData, PokemonStatResponse, PokemonTypeResponse, SpriteData, SpriteType } from './dataStore.js';
 
 const SMOGON_URL = 'https://www.smogon.com/stats/';
 const POKEAPI_URL = 'https://pokeapi.co/api/v2/';

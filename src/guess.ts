@@ -1,4 +1,4 @@
-import { Correctness, GuessResult, PokemonGuessData } from "./dataStore";
+import { Correctness, GuessResult, PokemonGuessData } from './dataStore.js';
 
 /**
  * Given two PokemonGuessData, returns the GuessResult.

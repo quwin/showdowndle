@@ -1,4 +1,4 @@
-import { scrapePokemonInTier } from '../../_lib/dataScraper.js';
+import { scrapePokemonInTier } from '../../../src/dataScraper.js';
 
 export const config = {
   api: {

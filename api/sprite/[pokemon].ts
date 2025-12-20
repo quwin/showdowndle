@@ -1,5 +1,5 @@
-import { scrapeSprite } from '../_lib/dataScraper.js';
-import { SpriteType } from '../_lib/dataStore.js';
+import { scrapeSprite } from '../../src/dataScraper.js';
+import { SpriteType } from '../../src/dataStore.js';
 
 export default async function handler(req: any, res: any) {
   const {pokemon} = req.query;
