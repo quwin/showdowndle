@@ -1,3 +1,8 @@
+<i> Pokémon Showdowndle is not affiliated with Nintendo and does not own or claim any rights to any Nintendo
+trademark or the Pokémon trademark. 
+<br>
+Pokémon Showdowndle is also not affiliated with Pokémon Showdown, but nevertheless greatly appreciates them.</i>
+<br> <br> <br>
 Huge shoutout to the people at <a href="https://www.smogon.com/">Smogon</a> for making all their data, code
 and sprites so easily accessible.
 <br>
@@ -15,6 +20,4 @@ Now go play some <a href="https://pokemonshowdown.com/">Showdown</a> and add mor
 <br> <br> <br> <br> <br>
 ...oh yeah, if you find any issues or have any suggestions, you can contact me through the following:
 <br>
-Discord (TO BE ADDED)
-<br>
-Reddit (TO BE ADDED)
+- u/CakenBakenWasTaken on Reddit
