@@ -1,6 +1,6 @@
 <strong> December 20th 2025 Changes </strong>
 <br>
-- Created Changelogs button!
+- Created Changelog button!
 <br>
 - Added suggestions when making typing in a guess. Suggestions are currently limited to Pokémon who have their
 usage data appear in the most recent tier data.
