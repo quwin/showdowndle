@@ -3,8 +3,8 @@ trademark or the Pokémon trademark.
 <br>
 Pokémon Showdowndle is also not affiliated with Pokémon Showdown, but nevertheless greatly appreciates them.</i>
 <br> <br> <br>
-Huge shoutout to the people at <a href="https://www.smogon.com/">Smogon</a> for making all their data, code
-and sprites so easily accessible.
+Huge shoutout to the people at Smogon and Pokémon Showdown for making all their
+data, code and sprites so easily accessible.
 <br>
 You can find the usage stats <a href="https://www.smogon.com/stats">here</a>,
 the styling used <a href="https://play.pokemonshowdown.com/style/">here</a>
