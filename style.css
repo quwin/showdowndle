@@ -615,6 +615,12 @@ header {
 	justify-content: center;
 }
 
+.autocomplete-wrapper {
+	position: relative;
+	display: inline-block;
+	width: 250px;
+}
+
 .suggestions {
 	position: absolute;
 	top: 100%;
