@@ -618,6 +618,7 @@ header {
 .autocomplete-wrapper {
 	position: relative;
 	width: 250px;
+	border: none;
 }
 
 .suggestions {
