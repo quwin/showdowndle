@@ -1,5 +1,5 @@
 import { fetchLatestTierData, fetchPokemonInTier, fetchSprite } from './api.js';
-import { getPokemonGuessData, getTextBoxSuggestions } from './dataCollector.js';
+import { extractNames, getPokemonGuessData, getTextBoxSuggestions } from './dataCollector.js';
 import { Correctness, FullTierData, GuessResult, PokemonGuessData } from './dataStore.js';
 import { comparePokemon } from './guess.js';
 import { titleCase } from 'title-case';
@@ -450,7 +450,7 @@ guessBox.addEventListener('keydown', function(event) {
 
 guessBox.addEventListener('input', () => {
   const input = guessBox.value.trim();
-  const suggestions = getTextBoxSuggestions(input, pokemonInTier);
+  const suggestions = getTextBoxSuggestions(input, extractNames(tierData));
 
   getSuggestions(suggestions);
 });
