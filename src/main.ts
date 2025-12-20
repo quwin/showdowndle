@@ -239,13 +239,19 @@ async function fetchTextFile(fileName: string): Promise<string> {
 /**
  * Creates a popup with the given innerHTML.
  * Returns the popup div.
- * If a function is provided, adds an Ok button
+ * If a function is provided, adds a second button
  * that calls the function when clicked.
+ * If secondName is provided, uses that as the
+ * text for the second button. If not, uses 'Ok'.
+ * Note: function is async incase fn is async.
  *
  * @param {string} innerHTML
+ * @param {string} secondName
  * @param {() => void} fn
  */
-function createPopup(innerHTML: string, fn?: () => void) {
+async function createPopup(
+  innerHTML: string, fn?: () => void, secondName?: string
+) {
   const overlay = document.createElement('div');
   overlay.className = 'overlay'; 
   overlay.id = 'overlayPopup';
@@ -267,15 +273,19 @@ function createPopup(innerHTML: string, fn?: () => void) {
   popup.appendChild(closeButton);
 
   if (fn) {
-    const okButton = document.createElement('button');
-    okButton.className = 'big button';
-    okButton.innerHTML = 'Ok';
-    okButton.style.display = 'inline';
-    okButton.addEventListener('click', () => {
+    const secondButton = document.createElement('button');
+    secondButton.className = 'big button';
+    if (secondName) {
+      secondButton.innerHTML = secondName;
+    } else {
+      secondButton.innerHTML = 'Ok';
+    }
+    secondButton.style.display = 'inline';
+    secondButton.addEventListener('click', () => {
       overlay.remove();
       fn();
     });
-    popup.appendChild(okButton);
+    popup.appendChild(secondButton);
   }
 
   document.body.appendChild(overlay);
@@ -299,6 +309,21 @@ async function createInfoPopup(fileName: string) {
   }
 }
 
+async function restartGame() {
+  guessCount = 0;
+  guessContainer.innerHTML = '';
+  const targetName: string = pokemonInTier[
+    Math.floor(Math.random() * pokemonInTier.length)
+  ];
+  try {
+    targetData = await getPokemonGuessData(tierData, targetName);
+    enableGuessMenu();
+  } catch (err) {
+    console.log(`Error: ${err.message}.`);
+    return;
+  }
+}
+
 /**
  * Creates the popup for when a Pokemon is correctly guessed.
  */
@@ -306,7 +331,7 @@ async function createVictoryPopup() {
   let text: string = '<strong>Congragulations!</strong>';
   text += '<br> <br>';
   text += `You caught ${targetData.name} in ${guessCount} guesses.`
-  createPopup(text);
+  createPopup(text, restartGame, 'Play Again');
 }
 
 /**
@@ -317,7 +342,7 @@ async function createDefeatPopup() {
   let text: string = '<strong>You Blacked Out!</strong>';
   text += '<br> <br>';
   text += `Defeated by a wild ${targetData.name}.`
-  createPopup(text);
+  createPopup(text, restartGame, 'Play Again');
 }
 
 /**
