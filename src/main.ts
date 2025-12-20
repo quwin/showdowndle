@@ -298,6 +298,7 @@ async function createVictoryPopup() {
 function disableFormatSelectMenu() {
   gameStart.disabled = true;
   formatSelection.disabled = true;
+  console.log('disabled format selection menu');
 }
 
 /**
@@ -324,7 +325,7 @@ function enableFormatSelectMenu(originalHTML: string) {
  * selection and shows the guess menu.
  */
 gameStart.addEventListener('click', async () => {
-  disableFormatSelectMenu
+  disableFormatSelectMenu();
   const originalHTML = gameStart.innerHTML;
   gameStart.innerHTML = 'Generating...';
 
