@@ -321,21 +321,21 @@ function enableFormatSelectMenu(originalHTML: string) {
  * @param {string[]} suggestions 
  */
 function getSuggestions(suggestions: string[]) {
-  guessSuggestions.innerHTML = "";
+  guessSuggestions.innerHTML = '';
 
   if (suggestions.length === 0) {
-    guessSuggestions.style.display = "none";
+    guessSuggestions.style.display = 'none';
     return;
   }
 
-  guessSuggestions.style.display = "block";
+  guessSuggestions.style.display = 'block';
 
   for (const suggestion of suggestions) {
-    const li = document.createElement("li");
+    const li = document.createElement('li');
     li.textContent = suggestion;
-    li.addEventListener("mousedown", () => {
+    li.addEventListener('mousedown', () => {
         guessBox.value = suggestion;
-        guessSuggestions.style.display = "none";
+        guessSuggestions.style.display = 'none';
     });
 
     guessSuggestions.appendChild(li);
@@ -456,9 +456,11 @@ guessBox.addEventListener('keydown', function(event) {
 
 guessBox.addEventListener('input', () => {
   const input = guessBox.value.trim();
-  const suggestions = getTextBoxSuggestions(input, extractNames(tierData));
 
-  getSuggestions(suggestions);
+  if (input.length > 0) {
+    const suggestions = getTextBoxSuggestions(input, pokemonInTier);
+    getSuggestions(suggestions);
+  }
 });
 
 instructButton.addEventListener('click', async () => {
