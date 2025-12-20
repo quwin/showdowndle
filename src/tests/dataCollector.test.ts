@@ -1,4 +1,4 @@
-import { getUsageStats, getMostCommonNature, getPokemonGuessData } from "../dataCollector";
+import { getUsageStats, getMostCommonNature, getPokemonGuessData, extractUsage } from "../dataCollector";
 import { scrapeLatestData } from "../dataScraper";
 import { FullTierData, Nature, Natures, PokemonGuessData } from '../dataStore';
 const TIMEOUT_MS = 60 * 1000;
@@ -80,4 +80,13 @@ describe('getPokemonGuessData Tests', () => {
   test('Throws error for non-existing Pokemon', async () => {
     await expect(getPokemonGuessData(data, 'iron beds')).rejects.toThrow();
   }, TIMEOUT_MS);
+});
+
+describe('Extract Usage Test', () => {
+  test('Creates a record with the correct values', () => {
+    const usageData: Record<string, number> = extractUsage(data);
+    for (const key in data) {
+      expect(usageData[key]).toStrictEqual(data[key].usage);
+    }
+  });
 });
