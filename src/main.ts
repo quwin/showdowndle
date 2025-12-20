@@ -292,6 +292,27 @@ async function createVictoryPopup() {
 }
 
 /**
+ * Disables the format select menu and
+ * the game start button.
+ */
+function disableFormatSelectMenu() {
+  gameStart.disabled = true;
+  formatSelection.disabled = true;
+}
+
+/**
+ * Enables the format select menu and
+ * the game start button.
+ *
+ * @param  {string} originalHTML 
+ */
+function enableFormatSelectMenu(originalHTML: string) {
+  gameStart.disabled = false;
+  formatSelection.disabled = false;
+  gameStart.innerHTML = originalHTML;
+}
+
+/**
  * When the Generate! button is clicked to start the game.
  * Tries to get the latest tier data and Pokemon currently
  * in the tier.
@@ -303,8 +324,7 @@ async function createVictoryPopup() {
  * selection and shows the guess menu.
  */
 gameStart.addEventListener('click', async () => {
-  gameStart.disabled = true;
-  formatSelection.disabled = true;
+  disableFormatSelectMenu
   const originalHTML = gameStart.innerHTML;
   gameStart.innerHTML = 'Generating...';
 
@@ -316,9 +336,7 @@ gameStart.addEventListener('click', async () => {
     tierData = await fetchLatestTierData(gen, tier);
   } catch (err) {
     console.log(`Error: ${err.message}.`);
-    gameStart.disabled = false;
-    formatSelection.disabled = false;
-    gameStart.innerHTML = originalHTML;
+    enableFormatSelectMenu(originalHTML);
     return;
   }
 
@@ -326,9 +344,7 @@ gameStart.addEventListener('click', async () => {
     pokemonInTier = await fetchPokemonInTier(gen, tier, tierData);
   } catch (err) {
     console.log(`Error: ${err.message}.`);
-    gameStart.disabled = false;
-    formatSelection.disabled = false;
-    gameStart.innerHTML = originalHTML;
+    enableFormatSelectMenu(originalHTML);
     return;
   }
 
@@ -339,14 +355,10 @@ gameStart.addEventListener('click', async () => {
     targetData = await getPokemonGuessData(tierData, targetName);
   } catch (err) {
     console.log(`Error: ${err.message}.`);
-    gameStart.disabled = false;
-    formatSelection.disabled = false;
-    gameStart.innerHTML = originalHTML;
+    enableFormatSelectMenu(originalHTML);
     return;
   }
 
-  gameStart.disabled = false;
-  gameStart.innerHTML = originalHTML;
   formatSelectMenu.remove();
   guessWrapper.style.display = 'block';
 });
