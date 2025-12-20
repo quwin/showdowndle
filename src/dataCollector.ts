@@ -85,3 +85,17 @@ export async function getPokemonGuessData(
     highestStat: Object.values(Stats)[stats.indexOf(Math.max(...stats))],
   };
 }
+
+/**
+ * Extracts usage data from FullTierData object.
+ * 
+ * @param {FullTierData} data 
+ * @returns {Record<string, number>}
+ */
+export function extractUsage(data: FullTierData): Record<string, number> {
+  const result: Record<string, number> = {};
+  for (const key in data) {
+    result[key] = data[key].usage;
+  }
+  return result;
+}
