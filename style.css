@@ -454,23 +454,6 @@ header {
 	box-shadow: 0 1px 2px rgba(0,0,0,.1);
 }
 
-.menugroup .button-first, .button-middle {
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0;
-}
-.menugroup .button-last, .button-middle {
-	border-top-left-radius: 0;
-	border-bottom-left-radius: 0;
-	margin-left: -1px;
-}
-.menugroup .button-first:hover, .button-middle:hover {
-	/* puts the right-border over the left border of the button to the right of it */
-	position: relative;
-}
-.menugroup .button-first.cur:hover, .button-middle.cur:hover {
-	position: static;
-}
-
 /*********************************************************
  * Guess Result
  *********************************************************/
@@ -485,6 +468,23 @@ header {
 	margin-top: 8px;
 
 	box-shadow: inset 1px 1px 0 rgba(255,255,255,.6);
+}
+
+.setchart .button-first, .button-middle {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+.setchart .button-last, .button-middle {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	margin-left: -1px;
+}
+.setchart .button-first:hover, .button-middle:hover {
+	/* puts the right-border over the left border of the button to the right of it */
+	position: relative;
+}
+.setchart .button-first.cur:hover, .button-middle.cur:hover {
+	position: static;
 }
 
 .guesscard {
