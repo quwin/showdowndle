@@ -1,5 +1,5 @@
 import { fetchLatestTierData, fetchPokemonInTier, fetchSprite } from './api.js';
-import { getPokemonGuessData } from './dataCollector.js';
+import { getPokemonGuessData, getTextBoxSuggestions } from './dataCollector.js';
 import { Correctness, FullTierData, GuessResult, PokemonGuessData } from './dataStore.js';
 import { comparePokemon } from './guess.js';
 import { titleCase } from 'title-case';
@@ -20,6 +20,7 @@ const invalidPokemonErrorMessage = document.getElementById('invalidError') as HT
 const instructButton = document.getElementById('instructButton') as HTMLButtonElement;
 const clarifyButton = document.getElementById('clarifyButton') as HTMLButtonElement;
 const creditButton = document.getElementById('creditButton') as HTMLButtonElement;
+const guessSuggestions = document.getElementById("guessSuggestions") as HTMLUListElement;
 
 /**
  * Creates a box for a boolean (yes/no) guess result.
@@ -312,6 +313,21 @@ function enableFormatSelectMenu(originalHTML: string) {
   formatSelection.disabled = false;
   gameStart.innerHTML = originalHTML;
 }
+/**
+ * Given a list of suggestions, updates
+ * the guessSuggestions ul to contain them.
+ * 
+ * @param {string[]} suggestions 
+ */
+function getSuggestions(suggestions: string[]) {
+  guessSuggestions.innerHTML = "";
+
+  for (const suggestion of suggestions) {
+    const li = document.createElement("li");
+    li.textContent = suggestion;
+    guessSuggestions.appendChild(li);
+  }
+}
 
 /**
  * When the Generate! button is clicked to start the game.
@@ -423,6 +439,13 @@ guessBox.addEventListener('keydown', function(event) {
     event.preventDefault();
     guessSubmitBtn.click();
   }
+});
+
+guessBox.addEventListener('input', () => {
+  const input = guessBox.value.trim();
+  const suggestions = getTextBoxSuggestions(input, pokemonInTier);
+
+  getSuggestions(suggestions);
 });
 
 instructButton.addEventListener('click', async () => {
