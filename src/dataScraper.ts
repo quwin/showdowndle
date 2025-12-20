@@ -1,23 +1,10 @@
 import { getYear, getMonth, subMonths, getDate } from 'date-fns';
 import { FullTierData, PokemonStatResponse, PokemonTypeResponse, SpriteData, SpriteType } from './dataStore.js';
+import { extractUsage } from './dataCollector.js';
 
 const SMOGON_URL = 'https://www.smogon.com/stats/';
 const POKEAPI_URL = 'https://pokeapi.co/api/v2/';
 const SHOWDOWN__SPRITE_URL = 'https://play.pokemonshowdown.com/sprites/';
-
-/**
- * Extracts usage data from FullTierData object.
- * 
- * @param {FullTierData} data 
- * @returns {Record<string, number>}
- */
-function extractUsage(data: FullTierData): Record<string, number> {
-  const result: Record<string, number> = {};
-  for (const key in data) {
-    result[key] = data[key].usage;
-  }
-  return result;
-}
 
 /**
  * Function that finds the URL for the Smogon data given year, month,
@@ -105,7 +92,7 @@ export async function scrapeLatestData(
  * @throws {Error}
  */
 export async function scrapePokemonInTier(
-  currData: FullTierData, gen: number, tier: string
+  currUsageData: Record<string, number>, gen: number, tier: string
 ): Promise<string[]> {
   const currDate = new Date();
   let monthOffset = (getMonth(currDate) + 1) % 3;
@@ -149,7 +136,7 @@ export async function scrapePokemonInTier(
   const tieredPokemon: string[] = [];
   for (const key in data1) {
     if (
-      (currData[key] && usage1[key] && usage2[key] && usage3[key]) &&
+      (currUsageData[key] && usage1[key] && usage2[key] && usage3[key]) &&
       usage1[key] + usage2[key] + usage3[key] >= 3 * 0.0452
     ) {
       tieredPokemon.push(key);
