@@ -239,8 +239,11 @@ async function fetchTextFile(fileName: string): Promise<string> {
 /**
  * Creates a popup with the given innerHTML.
  * Returns the popup div.
+ * If a function is provided, adds an Ok button
+ * that calls the function when clicked.
  *
  * @param {string} innerHTML
+ * @param {() => void} fn
  * @returns {HTMLDivElement}
  */
 function createPopup(
