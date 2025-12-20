@@ -21,7 +21,7 @@ const instructButton = document.getElementById('instructButton') as HTMLButtonEl
 const clarifyButton = document.getElementById('clarifyButton') as HTMLButtonElement;
 const creditButton = document.getElementById('creditButton') as HTMLButtonElement;
 const changelogButton = document.getElementById('changelogButton') as HTMLButtonElement;
-const guessSuggestions = document.getElementById("guessSuggestions") as HTMLUListElement;
+const guessSuggestions = document.getElementById('guessSuggestions') as HTMLUListElement;
 
 /**
  * Creates a box for a boolean (yes/no) guess result.
