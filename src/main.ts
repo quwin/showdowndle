@@ -20,6 +20,7 @@ const invalidPokemonErrorMessage = document.getElementById('invalidError') as HT
 const instructButton = document.getElementById('instructButton') as HTMLButtonElement;
 const clarifyButton = document.getElementById('clarifyButton') as HTMLButtonElement;
 const creditButton = document.getElementById('creditButton') as HTMLButtonElement;
+const changelogButton = document.getElementById('changelogButton') as HTMLButtonElement;
 const guessSuggestions = document.getElementById("guessSuggestions") as HTMLUListElement;
 
 /**
@@ -470,4 +471,8 @@ clarifyButton.addEventListener('click', async () => {
 
 creditButton.addEventListener('click', async () => {
   createInfoPopup('credits');
+});
+
+changelogButton.addEventListener('click', async () => {
+  createInfoPopup('changelog');
 });
