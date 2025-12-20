@@ -1,5 +1,6 @@
-import { FullTierData } from "./dataStore";
-import { convertToSmogonSpriteName } from "./nameConverters";
+import { extractUsage } from './dataCollector.js';
+import { FullTierData } from './dataStore.js';
+import { convertToSmogonSpriteName } from './nameConverters.js';
 const SERVER_URL = '/api/';
 
 export async function fetchLatestTierData(
@@ -21,10 +22,10 @@ export async function fetchPokemonInTier(
 ) : Promise<string[]> {
   const response = await fetch(
     `${SERVER_URL}tier-pokemon/${gen}/${tier}`, {
-      method: "POST",
-      body: JSON.stringify({tierData}),
+      method: 'POST',
+      body: JSON.stringify({tierData: extractUsage(tierData)}),
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     }
   );
