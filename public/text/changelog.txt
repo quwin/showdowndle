@@ -4,3 +4,5 @@
 <br>
 - Added suggestions when typing in a guess. Suggestions are currently limited to Pokémon who have their
 usage data appear in the most recent tier data.
+<br>
+- Added a "Forfeit" button that allows you to give up and see the target Pokémon.
