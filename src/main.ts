@@ -458,7 +458,7 @@ guessBox.addEventListener('input', () => {
   const input = guessBox.value.trim();
 
   if (input.length > 0) {
-    const suggestions = getTextBoxSuggestions(input, pokemonInTier);
+    const suggestions = getTextBoxSuggestions(input, extractNames(tierData));
     getSuggestions(suggestions);
   }
 });
