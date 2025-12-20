@@ -470,23 +470,6 @@ header {
 	box-shadow: inset 1px 1px 0 rgba(255,255,255,.6);
 }
 
-.setchart .button-first, .button-middle {
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0;
-}
-.setchart .button-last, .button-middle {
-	border-top-left-radius: 0;
-	border-bottom-left-radius: 0;
-	margin-left: -1px;
-}
-.setchart .button-first:hover, .button-middle:hover {
-	/* puts the right-border over the left border of the button to the right of it */
-	position: relative;
-}
-.setchart .button-first.cur:hover, .button-middle.cur:hover {
-	position: static;
-}
-
 .guesscard {
 	display: flex;
 	gap: 5px;
