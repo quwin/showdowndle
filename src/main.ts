@@ -313,6 +313,7 @@ async function createVictoryPopup() {
  * Creates the popup for when you forfeit.
  */
 async function createDefeatPopup() {
+  disableGuessMenu();
   let text: string = '<strong>You Blacked Out!</strong>';
   text += '<br> <br>';
   text += `Defeated by a wild ${targetData.name}.`
