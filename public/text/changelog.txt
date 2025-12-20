@@ -2,5 +2,5 @@
 <br>
 - Created Changelog button!
 <br>
-- Added suggestions when making typing in a guess. Suggestions are currently limited to Pokémon who have their
+- Added suggestions when typing in a guess. Suggestions are currently limited to Pokémon who have their
 usage data appear in the most recent tier data.
