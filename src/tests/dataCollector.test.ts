@@ -1,4 +1,4 @@
-import { getUsageStats, getMostCommonNature, getPokemonGuessData, extractUsage } from "../dataCollector";
+import { getUsageStats, getMostCommonNature, getPokemonGuessData, extractUsage, extractNames, getTextBoxSuggestions } from "../dataCollector";
 import { scrapeLatestData } from "../dataScraper";
 import { FullTierData, Nature, Natures, PokemonGuessData } from '../dataStore';
 const TIMEOUT_MS = 60 * 1000;
@@ -82,11 +82,58 @@ describe('getPokemonGuessData Tests', () => {
   }, TIMEOUT_MS);
 });
 
-describe('Extract Usage Test', () => {
+describe('extractUsage Test', () => {
   test('Creates a record with the correct values', () => {
     const usageData: Record<string, number> = extractUsage(data);
     for (const key in data) {
       expect(usageData[key]).toStrictEqual(data[key].usage);
     }
+  });
+});
+
+describe('extractNames Test', () => {
+  test('Creates a record with the correct values', () => {
+    const nameData: string[] = extractNames(data);
+    for (const key in data) {
+      expect(nameData).toContain(key);
+    }
+  });
+});
+
+describe('getTextBoxSuggestions Test', () => {
+  const names: string[] = [
+    'Great Tusk', 'Gholdengo', 'Kingambit', 'Iron Valiant', 'Iron Hands', 'Iron Moth',
+    'Ogerpon-Wellspring', 'Ting-Lu', 'Chi-Yu', 'Roaring Moon', 'Walking Wake',
+    'Iron Bundle', 'Iron Jugulis', 'Iron Thorns', 'Iron Leaves', 'Iron Treads', 'Iron Crown'
+  ]
+
+  test('Simple returns correct suggestions', () => {
+    expect(getTextBoxSuggestions('G', names)).toStrictEqual(['Great Tusk', 'Gholdengo']);
+    expect(getTextBoxSuggestions('Gr', names)).toStrictEqual(['Great Tusk']);
+    expect(getTextBoxSuggestions('Oger', names)).toStrictEqual(['Ogerpon-Wellspring']);
+    expect(getTextBoxSuggestions('Ogerpon', names)).toStrictEqual(['Ogerpon-Wellspring']);
+  });
+
+  test('Case insensitive returns correct suggestions', () => {
+    expect(getTextBoxSuggestions('g', names)).toStrictEqual(['Great Tusk', 'Gholdengo']);
+    expect(getTextBoxSuggestions('gr', names)).toStrictEqual(['Great Tusk']);
+    expect(getTextBoxSuggestions('oger', names)).toStrictEqual(['Ogerpon-Wellspring']);
+    expect(getTextBoxSuggestions('ogerpon', names)).toStrictEqual(['Ogerpon-Wellspring']);
+  });
+
+  test('Returns at most 8 suggestions', () => {
+    expect(getTextBoxSuggestions('I', names)).toStrictEqual([
+      'Iron Valiant', 'Iron Hands', 'Iron Moth', 'Iron Bundle',
+      'Iron Jugulis', 'Iron Thorns', 'Iron Leaves', 'Iron Treads'
+    ]);
+    expect(getTextBoxSuggestions('Iron ', names)).toStrictEqual([
+      'Iron Valiant', 'Iron Hands', 'Iron Moth', 'Iron Bundle',
+      'Iron Jugulis', 'Iron Thorns', 'Iron Leaves', 'Iron Treads'
+    ]);
+  });
+
+  test('Returns empty array for no matches', () => {
+    expect(getTextBoxSuggestions('Z', names)).toStrictEqual([]);
+    expect(getTextBoxSuggestions('XYZ', names)).toStrictEqual([]);
   });
 });
