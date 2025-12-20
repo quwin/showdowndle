@@ -312,6 +312,8 @@ async function createInfoPopup(fileName: string) {
 async function restartGame() {
   guessCount = 0;
   guessContainer.innerHTML = '';
+  guessBox.value = '';
+
   const targetName: string = pokemonInTier[
     Math.floor(Math.random() * pokemonInTier.length)
   ];
