@@ -15,14 +15,15 @@ most recent usage data show up if you try to guess them.
 For a Pokémon to be in a tier, it must have an average of >4.52% usage in the last 3 month tiering period, those being
 Jan-Mar, Apr-Jun, Jul-Sep and Oct-Dec, in the 1630+ ladder (1695+ for gen9ou).
 <br> <br>
-However, I have found some scenarios in which a Pokémon has met the usage threshold and not been included in the tier.
+This is the same metric used to pick the target. 
+<br> <br>
+However, older generations which have their tiers frozen do not use this method, relying on viability ranking instead.
 <br> <br>
 For example, Raikou consistently had >6% usage in the 1630+ ladder for gen3ou from Jul-Sep of 2025.
 <br> <br>
-However, it is was ranked UUBL as of December 2025, even though Cloyster was ranked OU and did not reach the >4.52% average usage threshold.
+However, it is was ranked UUBL as of December 2025, even though Cloyster was ranked OU and did had <4.52% average usage.
 <br> <br>
-This is probably just a mistake on my part, so feel free to check the credits to see how you can send me a message telling me
-I'm an idiot.
+It's an added challenge (that I may or may not change in the future) that tests your knowledge of the tier.
 <br> <br> <br>
 <strong>Returned Types and BST Are the Most Recent Values</strong>
 <br>
