@@ -698,12 +698,14 @@ describe('convertToSmogonSpriteName tests', () => {
     const results = [
       'oricorio-pompom', 'tauros-paldeacombat', 'tauros-paldeablaze',
       'tauros-paldeaaqua', 'hooh', 'charizard-megax', 'raichu-megay',
-      'absol-megaz', 'necrozma-duskmane', 'necrozma-dawnwings', 'porygonz'
+      'absol-megaz', 'necrozma-duskmane', 'necrozma-dawnwings',
+      'porygonz', 'tinglu', 'chiyu', 'wochien', 'chienpao'
     ];
     const responses: string[] = [
       'oricorio-pom-pom', 'tauros-paldea-combat', 'tauros-paldea-blaze',
       'tauros-paldea-aqua', 'ho-oh', 'charizard-mega-x', 'raichu-mega-y',
-      'absol-mega-z', 'necrozma-dusk-mane', 'necrozma-dawn-wings', 'porygon-z'
+      'absol-mega-z', 'necrozma-dusk-mane', 'necrozma-dawn-wings',
+      'porygon-z', 'ting-lu', 'chi-yu', 'wo-chien', 'chien-pao',
     ];
     for (let i = 0; i < responses.length; i++) {
       expect(convertToSmogonSpriteName(
