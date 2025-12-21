@@ -780,7 +780,11 @@ export function convertToSmogonSpriteName(
     smogonName.includes('tauros-paldea') ||
     smogonName.includes('mega-') ||
     smogonName.includes('dusk-mane') ||
-    smogonName.includes('dawn-wings')
+    smogonName.includes('dawn-wings') ||
+    smogonName.includes('ting-lu') ||
+    smogonName.includes('chi-yu') ||
+    smogonName.includes('wo-chien') ||
+    smogonName.includes('chien-pao')
   ) {
     spriteName = spriteName.replace(/-(?!.*-)/, '');
   }
