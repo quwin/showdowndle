@@ -1,3 +1,7 @@
+<strong> December 21st 2025 Changes </strong>
+<br>
+- Fixed issue where sprites for the Treasures of Ruin weren't showing up
+<br> <br> <br>
 <strong> December 20th 2025 Changes </strong>
 <br>
 - Created Changelog button!
